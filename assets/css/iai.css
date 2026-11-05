@@ -1,0 +1,113 @@
+/* InvestoAI chat — shared copy of the homepage widget styles, used by /projects/ and project pages. */
+  /* ================= InvestoAI (live-site concierge design) ================= */
+  .iai { font-family: 'Red Hat Display', sans-serif; --ia-line: #ececef; }
+  .ai-orb { position: relative; display: block; flex: none; width: 44px; height: 44px; border-radius: 50%; overflow: hidden; isolation: isolate;
+    background: #0e0e10; box-shadow: 0 0 0 2px rgba(224,194,153,.55), 0 8px 22px -6px rgba(242,117,78,.7); }
+  .ai-orb::before { content: ""; position: absolute; inset: -35%; z-index: -1; background: conic-gradient(from 0deg, #F3DDB9, #F2754E, #C9A06A, #6b4a22, #F2754E, #F3DDB9); filter: blur(5px); animation: orbSpin 4.5s linear infinite; }
+  .ai-orb::after { content: ""; position: absolute; inset: 14%; border-radius: 50%; z-index: -1; background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.95), rgba(255,255,255,.2) 42%, transparent 68%); }
+  .ai-orb i { position: absolute; inset: 0; display: grid; place-items: center; font-style: normal; font-size: 15px; color: #fff; text-shadow: 0 0 10px rgba(107,74,34,.8); }
+  .ai-orb.me { width: 46px; height: 46px; }
+  .iai.busy .ai-orb::before { animation-duration: 1.1s; }
+  .iai-open { position: fixed; right: 24px; bottom: 24px; z-index: 96; display: flex; align-items: center; gap: 12px; padding: 6px 18px 6px 6px; border: 1px solid var(--ia-line); border-radius: 999px; background: #fff; color: var(--ink);
+    cursor: pointer; text-align: left; box-shadow: 0 16px 40px rgba(0,0,0,.14); transition: transform .3s, opacity .3s; }
+  .iai-open:hover { transform: translateY(-3px); }
+  .iai.open .iai-open { opacity: 0; pointer-events: none; transform: translateY(20px); }
+  .iai-ava { position: relative; }
+  .iai-dot { position: absolute; right: 1px; bottom: 1px; width: 11px; height: 11px; border-radius: 50%; background: #3ccf6e; border: 2px solid #fff; }
+  .iai-lab b { display: block; font-size: 14px; font-weight: 600; } .iai-lab small { display: block; font-size: 12px; color: var(--muted); }
+  .iai-tip { position: fixed; right: 24px; bottom: 86px; z-index: 96; padding: 10px 14px; border: 0; border-radius: 12px 12px 4px 12px; background: var(--ink); color: #fff; font: 500 13px 'Red Hat Display', sans-serif; white-space: nowrap; cursor: pointer;
+    opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity .3s ease, transform .4s cubic-bezier(.16,1,.3,1); }
+  .iai-tip.show { opacity: 1; transform: none; pointer-events: auto; }
+  .iai-panel { position: fixed; right: 24px; bottom: 24px; z-index: 110; width: 420px; height: min(680px, calc(100vh - 112px)); display: flex; flex-direction: column; overflow: hidden;
+    background: #fff; border: 1px solid var(--ia-line); border-radius: 20px; box-shadow: 0 30px 80px rgba(20,20,30,.22);
+    transform-origin: bottom right; transform: scale(.6) translateY(40px); opacity: 0; pointer-events: none; transition: transform .45s cubic-bezier(.2,.9,.25,1.15), opacity .3s; }
+  .iai.open .iai-panel { transform: none; opacity: 1; pointer-events: auto; }
+  .iai-head { position: relative; flex: none; padding: 18px 18px 16px; color: #fff; overflow: hidden;
+    background: linear-gradient(120deg, rgba(27,27,31,.86), rgba(27,27,31,.55)), url(../v4/scene-skyline.jpg) center 30% / cover, #1b1b1f; }
+  .iai-hrow { display: flex; align-items: center; gap: 12px; }
+  .iai-id h2 { font-size: 16px; font-weight: 600; } .iai-id p { display: flex; align-items: center; gap: 6px; font-size: 12px; opacity: .85; } .iai-id p i { width: 7px; height: 7px; border-radius: 50%; background: #3ccf6e; }
+  .iai-x { margin-left: auto; width: 32px; height: 32px; border: 0; border-radius: 50%; background: rgba(255,255,255,.15); color: #fff; display: grid; place-items: center; cursor: pointer; transition: background .2s, transform .3s; }
+  .iai-x:hover { background: rgba(255,255,255,.28); transform: rotate(90deg); }
+  .iai-team { display: flex; align-items: flex-start; line-height: 1.4; gap: 8px; margin-top: 14px; font-size: 12px; opacity: .9; } .iai-team svg { flex: none; margin-top: 1px; } .iai-team a { white-space: nowrap; color: #fff; text-decoration: none; font-weight: 600; }
+  .iai-log { flex: 1; min-height: 0; overflow-y: auto; padding: 18px 16px 10px; background: #fafafb; display: flex; flex-direction: column; gap: 10px; overscroll-behavior: contain; }
+  .iai-log::-webkit-scrollbar { width: 6px; } .iai-log::-webkit-scrollbar-thumb { background: #ddd; border-radius: 6px; }
+  .day { align-self: center; font-size: 11px; color: var(--muted); background: #f0f0f2; padding: 4px 10px; border-radius: 999px; }
+  .m { display: flex; flex-direction: column; gap: 10px; animation: pop .35s cubic-bezier(.2,.9,.3,1.3); }
+  @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(.96); } }
+  .m-ic { display: none; }
+  .m-c { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .m-c > p, .m-user .m-c { max-width: 84%; font-size: 14px; line-height: 1.45; padding: 10px 14px; border-radius: 16px; }
+  .m-bot .m-c > p { align-self: flex-start; background: #fff; border: 1px solid var(--ia-line); border-bottom-left-radius: 4px; color: var(--ink); white-space: pre-wrap; }
+  .m-user { align-items: flex-end; } .m-user .m-c { background: var(--accent); color: #fff; border-bottom-right-radius: 4px; }
+  .m-user .m-c p { padding: 0; } .m-user .m-c > p { max-width: none; }
+  .m time { display: block; margin-top: 4px; font-size: 10px; opacity: .55; }
+  /* search steps (shown while searching, folds into one line) */
+  .qs { align-self: flex-start; max-width: 84%; padding: 10px 14px; border: 1px solid var(--ia-line); border-radius: 16px 16px 16px 4px; background: #fff; }
+  .qs.done { padding: 0; border: 0; background: none; }
+  .qs-t { display: inline-flex; align-items: center; gap: 7px; padding: 0; border: 0; background: none; color: var(--muted); font: 600 12px 'Red Hat Display', sans-serif; cursor: pointer; }
+  .qs-sp { width: 12px; height: 12px; border-radius: 50%; border: 2px solid #f5c9b9; border-top-color: var(--accent); animation: orbSpin .8s linear infinite; }
+  .qs.done .qs-sp { animation: none; border-color: #3ccf6e; background: #3ccf6e; box-shadow: inset 0 0 0 2px #fff; }
+  .qs-c { width: 12px; height: 12px; transition: transform .2s ease; } .qs.shut .qs-c { transform: rotate(-90deg); }
+  .qs-s { list-style: none; margin-top: 8px; display: grid; gap: 6px; } .qs.shut .qs-s { display: none; }
+  .qs.done:not(.shut) .qs-s { padding: 8px 12px; border: 1px solid var(--ia-line); border-radius: 12px; background: #fff; }
+  .qs-s li { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: #9a9aa2; }
+  .qs-s li i { width: 15px; height: 15px; border-radius: 50%; display: grid; place-items: center; background: #f0f0f2; color: transparent; } .qs-s li i svg { width: 9px; height: 9px; }
+  .qs-s li.ok { color: var(--ink); } .qs-s li.ok i { background: #3ccf6e; color: #fff; }
+  .tw { align-self: stretch; overflow-x: auto; border: 1px solid var(--ia-line); border-radius: 14px; background: #fff; }
+  .iai-t { width: 100%; border-collapse: collapse; font-size: 13px; } .iai-t th, .iai-t td { padding: 8px 12px; text-align: left; vertical-align: top; } .iai-t tr + tr th, .iai-t tr + tr td { border-top: 1px solid #f2f2f4; }
+  .iai-t th { font-weight: 500; color: var(--muted); } .iai-t td { font-weight: 600; font-variant-numeric: tabular-nums; }
+  /* listing cards (live .pcard style) */
+  .lks { display: flex; gap: 10px; overflow-x: auto; margin: 0 -16px; padding: 2px 16px 8px; scroll-snap-type: x mandatory; } .lks::-webkit-scrollbar { height: 4px; } .lks::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
+  .lk { position: relative; flex: 0 0 220px; scroll-snap-align: start; overflow: hidden; background: #fff; border: 1px solid var(--ia-line); border-radius: 14px; }
+  .lks.one .lk { flex-basis: 260px; }
+  .lk img, .lk-ph { display: block; width: 100%; height: 120px; object-fit: cover; }
+  .lk-ph { display: grid; place-items: center; background: #1b1b1f; } .lk-ph span { font-family: 'Marcellus', Georgia, serif; font-size: 18px; letter-spacing: .06em; color: #E8C995; text-transform: uppercase; }
+  .lk-tag { position: absolute; left: 8px; top: 8px; padding: 3px 8px; border-radius: 999px; background: rgba(255,255,255,.92); font-size: 10.5px; font-weight: 600; color: var(--ink); }
+  .lk-b { padding: 10px 12px 12px; } .lk-dev { font-size: 10.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gold-deep); }
+  .lk h4 { margin-top: 2px; font-size: 14px; font-weight: 600; line-height: 1.3; } .lk-loc { margin-top: 2px; font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lk-row { display: flex; justify-content: space-between; align-items: center; gap: 6px; margin-top: 8px; } .lk-row b { font-size: 14px; } .lk-row span { padding: 3px 7px; border-radius: 999px; background: #e9f8ef; color: #1f9d55; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .lk-rera { margin-top: 6px; font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lk-act { display: flex; gap: 6px; margin-top: 10px; }
+  .lk-act button { flex: 1; padding: 7px; border-radius: 8px; font: 600 12.5px 'Red Hat Display', sans-serif; cursor: pointer; transition: background .2s, color .2s; }
+  .lk-v { border: 1px solid var(--accent); background: var(--accent); color: #fff; } .lk-v:hover { background: var(--accent-dark); }
+  .lk-q { border: 1px solid var(--accent); background: #fff; color: var(--accent); } .lk-q:hover { background: var(--accent); color: #fff; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; align-self: flex-start; }
+  .chips button { padding: 8px 13px; border: 1px solid #f5c9b9; border-radius: 999px; background: #fff; color: var(--accent-dark); font: 500 13px 'Red Hat Display', sans-serif; cursor: pointer; transition: background .2s, color .2s, transform .2s; }
+  .chips button:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
+  .iai-down { position: absolute; left: 50%; bottom: 96px; width: 34px; height: 34px; border: 1px solid var(--ia-line); border-radius: 50%; background: #fff; color: var(--ink); display: grid; place-items: center; cursor: pointer;
+    transform: translate(-50%, 6px); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease; } .iai-down.on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+  .iai-foot { flex: none; display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-top: 1px solid var(--ia-line); background: #fff; }
+  .iai-foot textarea { flex: 1; min-width: 0; height: 40px; max-height: 110px; padding: 10px 6px; border: 0; background: transparent; resize: none; color: var(--ink); font: 14px/1.4 'Red Hat Display', sans-serif; outline: none; }
+  .iai .iai-foot textarea:focus-visible { outline: none; }
+  .iai-call { flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--ia-line); background: #fff; display: grid; place-items: center; color: var(--ink); }
+  .iai-send { flex: none; width: 40px; height: 40px; border: 0; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; cursor: pointer; transition: transform .2s; } .iai-send:hover { transform: scale(1.08) rotate(-12deg); }
+  .iai-fine { flex: none; padding: 0 12px 8px; background: #fff; text-align: center; font-size: 10.5px; color: #a1a1a8; } .iai-fine a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .iai button:focus-visible, .iai a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  /* call-back sheet */
+  .iai-lead { position: absolute; inset: 0; z-index: 3; display: flex; align-items: flex-end; background: rgba(20,16,12,.38); } .iai-lead[hidden] { display: none; }
+  .iai-lead form { width: 100%; padding: 20px 18px 18px; border-radius: 20px 20px 0 0; background: #fff; animation: pop .35s ease both; }
+  .il-top { display: flex; align-items: center; justify-content: space-between; } .il-top h3 { font-size: 17px; font-weight: 600; }
+  .il-top button { width: 32px; height: 32px; border: 0; border-radius: 50%; background: #f0f0f2; display: grid; place-items: center; cursor: pointer; }
+  .iai-lead p { margin-top: 4px; font-size: 13px; color: var(--muted); }
+  .iai-lead label { display: block; margin-top: 10px; font-size: 12.5px; font-weight: 600; }
+  .iai-lead input:not([type=hidden]), .iai-lead select { display: block; width: 100%; height: 42px; margin-top: 5px; padding: 0 12px; border: 1px solid var(--ia-line); border-radius: 10px; background: #fafafb; font: 14px 'Red Hat Display', sans-serif; color: var(--ink); outline: none; }
+  .iai-lead input:focus, .iai-lead select:focus { border-color: var(--accent); } .iai-lead [aria-invalid="true"] { border-color: #c4441f; }
+  .il-err { color: #b33a1c !important; font-weight: 600; } .il-err:empty { display: none; }
+  .il-go { width: 100%; height: 44px; margin-top: 12px; border: 0; border-radius: 10px; background: var(--accent); color: #fff; font: 600 14px 'Red Hat Display', sans-serif; cursor: pointer; }
+  @media (max-width: 900px) {
+    .iai-open { right: 16px; bottom: 16px; padding: 5px; } .iai-lab { display: none; } .iai-tip { display: none; }
+    .iai-panel { left: 8px; right: 8px; bottom: 8px; width: auto; height: calc(100dvh - 16px); }
+    html.iai-lock, html.iai-lock body { overflow: hidden; }
+  }
+  @media (prefers-reduced-motion: reduce) { .iai-panel, .m, .ai-orb::before, .qs-sp { transition: none !important; animation: none !important; } }
+  /* phones: a full-screen sheet above the site header, cards sized to the screen */
+  @media (max-width: 900px) {
+    .iai-panel { inset: 0 !important; width: auto !important; height: 100dvh !important; border-radius: 0 !important; z-index: 210 !important; border: 0; }
+    .iai-head { padding-top: calc(14px + env(safe-area-inset-top)); }
+    .iai-log { padding: 14px 12px 10px; }
+    .lks { margin: 0 -12px; padding: 2px 12px 8px; }
+    .lk { flex-basis: min(78vw, 270px) !important; }
+    .lks.one .lk { flex-basis: min(86vw, 300px) !important; }
+    .m-c > p, .m-user .m-c { max-width: 90%; }
+  }
+  .iai-hand { position: relative; overflow: hidden; } .iai-hand i { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--accent, #F2754E); transform-origin: 0 50%; animation: iaiHand 2.6s linear both; } @keyframes iaiHand { from { transform: scaleX(0); } to { transform: none; } }
